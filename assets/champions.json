@@ -1,0 +1,442 @@
+[
+  {
+    "id": 2205,
+    "name": "Androxus",
+    "feName": "Androxus",
+    "title": "The Godslayer",
+    "role": "Paladins Flanker",
+    "feRole": "Paladins Flanker",
+    "image": "https://web2.hirez.com/paladins/champion-icons/androxus.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2404,
+    "name": "Ash",
+    "feName": "Ash",
+    "title": "The War Machine",
+    "role": "Paladins Front Line",
+    "feRole": "Paladins Front Line",
+    "image": "https://web2.hirez.com/paladins/champion-icons/ash.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2512,
+    "name": "Atlas",
+    "feName": "Atlas",
+    "title": "The Man Out of Time",
+    "role": "Paladins Front Line",
+    "feRole": "Paladins Front Line",
+    "image": "https://web2.hirez.com/paladins/champion-icons/atlas.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2073,
+    "name": "Barik",
+    "feName": "Barik",
+    "title": "The Master Mechanic",
+    "role": "Paladins Front Line",
+    "feRole": "Paladins Front Line",
+    "image": "https://web2.hirez.com/paladins/champion-icons/barik.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2281,
+    "name": "Bomb King",
+    "feName": "Bomb King",
+    "title": "His Majesty",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/bomb-king.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2147,
+    "name": "Buck",
+    "feName": "Buck",
+    "title": "The Unyielding",
+    "role": "Paladins Flanker",
+    "feRole": "Paladins Flanker",
+    "image": "https://web2.hirez.com/paladins/champion-icons/buck.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2092,
+    "name": "Cassie",
+    "feName": "Cassie",
+    "title": "The Hunter's Daughter",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/cassie.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2495,
+    "name": "Dredge",
+    "feName": "Dredge",
+    "title": "Admiral of the Abyss",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/dredge.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2277,
+    "name": "Drogoz",
+    "feName": "Drogoz",
+    "title": "The Greedy",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/drogoz.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2094,
+    "name": "Evie",
+    "feName": "Evie",
+    "title": "The Winter Witch",
+    "role": "Paladins Flanker",
+    "feRole": "Paladins Flanker",
+    "image": "https://web2.hirez.com/paladins/champion-icons/evie.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2071,
+    "name": "Fernando",
+    "feName": "Fernando",
+    "title": "The Self-Appointed Knight",
+    "role": "Paladins Front Line",
+    "feRole": "Paladins Front Line",
+    "image": "https://web2.hirez.com/paladins/champion-icons/fernando.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2491,
+    "name": "Furia",
+    "feName": "Furia",
+    "title": "Angel of Vengeance",
+    "role": "Paladins Support",
+    "feRole": "Paladins Support",
+    "image": "https://web2.hirez.com/paladins/champion-icons/furia.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2093,
+    "name": "Grohk",
+    "feName": "Grohk",
+    "title": "The Lightning Orc",
+    "role": "Paladins Support",
+    "feRole": "Paladins Support",
+    "image": "https://web2.hirez.com/paladins/champion-icons/grohk.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2254,
+    "name": "Grover",
+    "feName": "Grover",
+    "title": "The Wild",
+    "role": "Paladins Support",
+    "feRole": "Paladins Support",
+    "image": "https://web2.hirez.com/paladins/champion-icons/grover.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2509,
+    "name": "Imani",
+    "feName": "Imani",
+    "title": "The Last Warder",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/imani.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2348,
+    "name": "Inara",
+    "feName": "Inara",
+    "title": "The Stone Warden",
+    "role": "Paladins Front Line",
+    "feRole": "Paladins Front Line",
+    "image": "https://web2.hirez.com/paladins/champion-icons/inara.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2517,
+    "name": "Io",
+    "feName": "Io",
+    "title": "the Shattered Goddess",
+    "role": "Paladins Support",
+    "feRole": "Paladins Support",
+    "image": "https://web2.hirez.com/paladins/champion-icons/io.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2431,
+    "name": "Jenos",
+    "feName": "Jenos",
+    "title": "The Ascended",
+    "role": "Paladins Support",
+    "feRole": "Paladins Support",
+    "image": "https://web2.hirez.com/paladins/champion-icons/jenos.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2479,
+    "name": "Khan",
+    "feName": "Khan",
+    "title": "Primus of house Aico",
+    "role": "Paladins Front Line",
+    "feRole": "Paladins Front Line",
+    "image": "https://web2.hirez.com/paladins/champion-icons/khan.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2249,
+    "name": "Kinessa",
+    "feName": "Kinessa",
+    "title": "The Bounty Hunter",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/kinessa.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2493,
+    "name": "Koga",
+    "feName": "Koga",
+    "title": "The Lost Hand",
+    "role": "Paladins Flanker",
+    "feRole": "Paladins Flanker",
+    "image": "https://web2.hirez.com/paladins/champion-icons/koga.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2362,
+    "name": "Lex",
+    "feName": "Lex",
+    "title": "The Hand of Justice",
+    "role": "Paladins Flanker",
+    "feRole": "Paladins Flanker",
+    "image": "https://web2.hirez.com/paladins/champion-icons/lex.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2417,
+    "name": "Lian",
+    "feName": "Lian",
+    "title": "Scion of House Aico",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/lian.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2338,
+    "name": "Maeve",
+    "feName": "Maeve",
+    "title": "of Blades",
+    "role": "Paladins Flanker",
+    "feRole": "Paladins Flanker",
+    "image": "https://web2.hirez.com/paladins/champion-icons/maeve.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2288,
+    "name": "Makoa",
+    "feName": "Makoa",
+    "title": "The Ancient",
+    "role": "Paladins Front Line",
+    "feRole": "Paladins Front Line",
+    "image": "https://web2.hirez.com/paladins/champion-icons/makoa.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2303,
+    "name": "Mal'Damba",
+    "feName": "Mal'Damba",
+    "title": "Wekono's Chosen",
+    "role": "Paladins Support",
+    "feRole": "Paladins Support",
+    "image": "https://web2.hirez.com/paladins/champion-icons/maldamba.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2481,
+    "name": "Moji",
+    "feName": "Moji",
+    "title": "and Friends",
+    "role": "Paladins Flanker",
+    "feRole": "Paladins Flanker",
+    "image": "https://web2.hirez.com/paladins/champion-icons/moji.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2056,
+    "name": "Pip",
+    "feName": "Pip",
+    "title": "The Rogue Alchemist",
+    "role": "Paladins Support",
+    "feRole": "Paladins Support",
+    "image": "https://web2.hirez.com/paladins/champion-icons/pip.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2528,
+    "name": "Raum",
+    "feName": "Raum",
+    "title": "Rage of the Abyss",
+    "role": "Paladins Front Line",
+    "feRole": "Paladins Front Line",
+    "image": "https://web2.hirez.com/paladins/champion-icons/raum.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2149,
+    "name": "Ruckus",
+    "feName": "Ruckus",
+    "title": "The Worst of Friends",
+    "role": "Paladins Front Line",
+    "feRole": "Paladins Front Line",
+    "image": "https://web2.hirez.com/paladins/champion-icons/ruckus.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2372,
+    "name": "Seris",
+    "feName": "Seris",
+    "title": "Oracle of the Abyss",
+    "role": "Paladins Support",
+    "feRole": "Paladins Support",
+    "image": "https://web2.hirez.com/paladins/champion-icons/seris.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2307,
+    "name": "Sha Lin",
+    "feName": "Sha Lin",
+    "title": "The Desert Wind",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/sha-lin.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2057,
+    "name": "Skye",
+    "feName": "Skye",
+    "title": "The Twilight Assassin",
+    "role": "Paladins Flanker",
+    "feRole": "Paladins Flanker",
+    "image": "https://web2.hirez.com/paladins/champion-icons/skye.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2438,
+    "name": "Strix",
+    "feName": "Strix",
+    "title": "Ghost Feather",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/strix.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2472,
+    "name": "Talus",
+    "feName": "Talus",
+    "title": "of the Ska'drin",
+    "role": "Paladins Flanker",
+    "feRole": "Paladins Flanker",
+    "image": "https://web2.hirez.com/paladins/champion-icons/talus.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2477,
+    "name": "Terminus",
+    "feName": "Terminus",
+    "title": "The Fallen",
+    "role": "Paladins Front Line",
+    "feRole": "Paladins Front Line",
+    "image": "https://web2.hirez.com/paladins/champion-icons/terminus.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2529,
+    "name": "Tiberius",
+    "feName": "Tiberius",
+    "title": "The Weapons Master",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/tiberius.jpg",
+    "latest": "y"
+  },
+  {
+    "id": 2322,
+    "name": "Torvald",
+    "feName": "Torvald",
+    "title": "The Runic Sage",
+    "role": "Paladins Front Line",
+    "feRole": "Paladins Front Line",
+    "image": "https://web2.hirez.com/paladins/champion-icons/torvald.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2314,
+    "name": "Tyra",
+    "feName": "Tyra",
+    "title": "The Untamed",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/tyra.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2285,
+    "name": "Viktor",
+    "feName": "Viktor",
+    "title": "The Lone Wolf",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/viktor.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2480,
+    "name": "Vivian",
+    "feName": "Vivian",
+    "title": "The Cunning",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/vivian.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2393,
+    "name": "Willo",
+    "feName": "Willo",
+    "title": "of the Summer Court",
+    "role": "Paladins Damage",
+    "feRole": "Paladins Damage",
+    "image": "https://web2.hirez.com/paladins/champion-icons/willo.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2267,
+    "name": "Ying",
+    "feName": "Ying",
+    "title": "The Blossom",
+    "role": "Paladins Support",
+    "feRole": "Paladins Support",
+    "image": "https://web2.hirez.com/paladins/champion-icons/ying.jpg",
+    "latest": "n"
+  },
+  {
+    "id": 2420,
+    "name": "Zhin",
+    "feName": "Zhin",
+    "title": "The Tyrant",
+    "role": "Paladins Flanker",
+    "feRole": "Paladins Flanker",
+    "image": "https://web2.hirez.com/paladins/champion-icons/zhin.jpg",
+    "latest": "n"
+  }
+]

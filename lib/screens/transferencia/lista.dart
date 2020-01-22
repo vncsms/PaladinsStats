@@ -21,6 +21,7 @@ class ListaTransferenciasState extends State<Listatransferencias> {
       body: ListView.builder(
           itemCount: widget._transferencias.length,
           itemBuilder: (context, indice) {
+
             final transferencia = widget._transferencias[indice];
             return Itemtransferencia(transferencia);
           }),
@@ -34,6 +35,30 @@ class ListaTransferenciasState extends State<Listatransferencias> {
       ),
     );
   }
+
+/*  Widget _construirHome() {
+    return Scaffold(
+        body: SizedBox(
+            child: FutureBuilder(
+              future: DefaultAssetBundle
+                  .of(context)
+                  .loadString('assets/receitas.json'),
+              builder: (context, snapshot) {
+                List<dynamic> receitas = json.decode(snapshot.data.toString());
+
+                return ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    Receita receita = Receita.fromJson(receitas[index]);
+                    return _construirCard(receita.foto, receita.titulo);
+                  },
+                  itemCount: receitas == null ? 0 : receitas.length,
+                );
+              },
+            )
+        ),
+        appBar: _construirAppBar('Cozinhando em Casa')
+    );
+  }*/
 
   void _atualiza(Transferencia transferenciaRecebida) {
     if (transferenciaRecebida != null) {
@@ -52,10 +77,12 @@ class Itemtransferencia extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-        child: ListTile(
-      leading: Icon(Icons.monetization_on),
-      title: Text(_transferencia.valor.toString()),
-      subtitle: Text(_transferencia.numeroConta.toString()),
-    ));
+      color: const Color(0xff0e343c),
+      child: ListTile(
+        leading: Image.network('https://web2.hirez.com/paladins/champion-icons/ash.jpg'),
+        title: Text(_transferencia.valor.toString()),
+        subtitle: Text(_transferencia.numeroConta.toString()),
+      ),
+    );
   }
 }
