@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:paladins_stats_app/models/transferencia.dart';
 import 'package:paladins_stats_app/screens/transferencia/formulario.dart';
 import '../../models/champion.dart';
 
@@ -17,7 +16,7 @@ class ListaTransferenciasState extends State<Listatransferencias> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Transferencaiass'),
+          title: Text('Champions'),
         ),
         body: SizedBox(
           child: FutureBuilder(
@@ -43,15 +42,18 @@ class Itemtransferencia extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: const Color(0xff0e343c),
-      child: ListTile(
-        leading: Image.network(
-            _champion.image,
-            fit: BoxFit.fill),
-        title: Text(_champion.name),
-        subtitle: Text(_champion.title),
-      ),
-    );
+    return GestureDetector(
+        onTap: () {
+          Navigator.push( context, MaterialPageRoute(builder: (context) => FormularioTransferencia()));
+          debugPrint(_champion.feName);
+        },
+        child: Card(
+          color: const Color(0xff0e343c),
+          child: ListTile(
+            leading: Image.network(_champion.image, fit: BoxFit.fill),
+            title: Text(_champion.name),
+            subtitle: Text(_champion.title),
+          ),
+        ));
   }
 }
