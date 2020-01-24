@@ -44,8 +44,10 @@ class Itemtransferencia extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
         onTap: () {
-          Navigator.push( context, MaterialPageRoute(builder: (context) => FormularioTransferencia()));
-          debugPrint(_champion.feName);
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => FormularioTransferencia(champion: _champion)));
         },
         child: Card(
           color: const Color(0xff0e343c),
