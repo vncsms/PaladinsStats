@@ -25,18 +25,14 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
         body: FutureBuilder(
           future: fetchPost(widget.champion.feName),
           builder: (context, snapshot) {
-            debugPrint('oloco');
-            final champion = json.decode(snapshot.data.toString());
-            return SingleChildScrollView(
-              child: Column(
-                children: <Widget>[
-                  Image.network(
-                      'https://web2.hirez.com/paladins/champion-headers/' +
-                          champion[0]['slug'] +
-                          '.png'),
-                ],
-              ),
-            );
+            if (snapshot.hasData) {
+              final champion = json.decode(snapshot.data.toString());
+              return _championDetail(champion);
+            } else {
+              return Center(
+                child: CircularProgressIndicator(),
+              );
+            }
           },
         ));
   }
@@ -55,4 +51,66 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
       throw Exception('Failed to load post');
     }
   }
+}
+
+Widget _championDetail(champion) {
+  return SingleChildScrollView(
+    child: Column(
+      children: <Widget>[
+        _avatarPage(champion),
+        _titlePage(champion),
+      ],
+    ),
+  );
+}
+
+Widget _avatarPage(champion) {
+  return Image.network('https://web2.hirez.com/paladins/champion-headers/' +
+      champion[0]['slug'] +
+      '.png');
+}
+
+Widget _titlePage(champion) {
+  return Column(
+    children: <Widget>[
+      Container(
+        child: Text(
+            champion[0]['api_information']['Name_English'].toUpperCase(),
+            style: TextStyle(
+                fontSize: 45,
+                fontWeight: FontWeight.bold,
+                color: Colors.white)),
+      ),
+      Container(
+        child: Text(champion[0]['api_information']['Title'].toUpperCase(),
+            style: TextStyle(
+              fontSize: 20,
+              color: HexColor(champion[0]['frontend_info']['color_picker']),
+            )),
+      ),
+      Container(
+        child: Text(
+            champion[0]['frontend_info']['role']
+                .replaceAll('Paladins', '')
+                .toUpperCase(),
+            style: TextStyle(
+              fontSize: 20,
+              color: HexColor('#547a8c'),
+            )),
+      ),
+      Image.asset('assets/images/front.png', width: 27, height: 27),
+    ],
+  );
+}
+
+class HexColor extends Color {
+  static int _getColorFromHex(String hexColor) {
+    hexColor = hexColor.toUpperCase().replaceAll("#", "");
+    if (hexColor.length == 6) {
+      hexColor = "FF" + hexColor;
+    }
+    return int.parse(hexColor, radix: 16);
+  }
+
+  HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
 }
