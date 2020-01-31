@@ -65,9 +65,31 @@ Widget _championDetail(champion) {
 }
 
 Widget _avatarPage(champion) {
-  return Image.network('https://web2.hirez.com/paladins/champion-headers/' +
-      champion[0]['slug'] +
-      '.png');
+  return Stack(children: <Widget>[
+    Image.network('https://web2.hirez.com/paladins/champion-headers/' +
+        champion[0]['slug'] +
+        '.png'),
+    Positioned(
+      bottom: 20.0,
+      left: 20.0,
+      child: _chooseIcon(champion),
+    )
+  ]);
+}
+
+Widget _chooseIcon(champion) {
+  String role = champion[0]['api_information']['Roles'].toLowerCase();
+  if (role.contains('front')) {
+    return Image.asset('assets/images/front.png', width: 70, height: 70);
+  } else if (role.contains('flanker')) {
+    return Image.asset('assets/images/flank.png', width: 70, height: 70);
+  } else if (role.contains('damage')) {
+    return Image.asset('assets/images/damage.png', width: 70, height: 70);
+  } else if (role.contains('support')) {
+    return Image.asset('assets/images/support.png', width: 70, height: 70);
+  } else {
+    return null;
+  }
 }
 
 Widget _titlePage(champion) {
@@ -98,7 +120,6 @@ Widget _titlePage(champion) {
               color: HexColor('#547a8c'),
             )),
       ),
-      Image.asset('assets/images/front.png', width: 27, height: 27),
     ],
   );
 }
