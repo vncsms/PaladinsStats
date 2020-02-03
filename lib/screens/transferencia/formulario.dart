@@ -59,7 +59,163 @@ Widget _championDetail(champion) {
       children: <Widget>[
         _avatarPage(champion),
         _titlePage(champion),
+        _titleTopic('talents', 30.0),
+        _legendaries(champion),
+        _titleTopic('abilites', 45.0),
+        _abilites(champion),
       ],
+    ),
+  );
+}
+
+Widget _abilites(champion) {
+  String selected = '1';
+
+  return Container(
+    child: Row(
+      children: <Widget>[
+        Expanded(
+          flex: 1,
+          child: GestureDetector(
+            onTap: () {
+              selected = '1';
+              debugPrint(selected);
+            },
+            child: _abilityIcon(champion, '1', selected),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: GestureDetector(
+            onTap: () {
+              selected = '2';
+              debugPrint(selected);
+            },
+            child: _abilityIcon(champion, '2', selected),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: GestureDetector(
+            onTap: () {
+              selected = '3';
+              debugPrint(selected);
+            },
+            child: _abilityIcon(champion, '3', selected),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: GestureDetector(
+            onTap: () {
+              selected = '4';
+              debugPrint(selected);
+            },
+            child: _abilityIcon(champion, '4', selected),
+          ),
+        ),
+        Expanded(
+          flex: 1,
+          child: GestureDetector(
+            onTap: () {
+              selected = '5';
+              debugPrint(selected);
+            },
+            child: _abilityIcon(champion, '5', selected),
+          ),
+        ),
+      ],
+    ),
+  );
+}
+
+Widget _abilityIcon(champion, index, selected) {
+  var colorBorder =
+      index == selected ? const Color(0x547a8c00) : const Color(0x00000000);
+
+  return Container(
+    decoration: BoxDecoration(
+      border: Border(
+        top: BorderSide(width: 10.0, color: colorBorder),
+        left: BorderSide(width: 10.0, color: colorBorder),
+        right: BorderSide(width: 10.0, color: colorBorder),
+        bottom: BorderSide(width: 10.0, color: colorBorder),
+      ),
+    ),
+    child: Image.network(
+        champion[0]['api_information']['Ability_' + index]['URL']),
+  );
+}
+
+Widget _titleTopic(title, size) {
+  return Padding(
+    padding: EdgeInsets.all(16.0),
+    child: Text(title.toUpperCase(), style: TextStyle(fontSize: size)),
+  );
+}
+
+Widget _legendaries(champion) {
+  final cards = [];
+  for (var card in champion[0]['cards']) {
+    if (card['rarity'] == 'Legendary') {
+      cards.add(card);
+    }
+  }
+  return SizedBox(
+      height: 550.0,
+      child: ListView.builder(
+          primary: false,
+          itemCount: cards.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding:
+                  EdgeInsets.only(left: 20.0, right: 20.0, top: 0, bottom: 16),
+              child: _legendaryCard(cards[index]),
+            );
+          }));
+}
+
+Widget _legendaryCard(card) {
+  String card_name =
+      'https://web2.hirez.com/paladins/champion-legendaries-badge/' +
+          card['card_name_english'].toLowerCase().replaceAll(' ', '-') +
+          '.png';
+
+  return Container(
+    child: Card(
+      child: Row(
+        children: <Widget>[
+          Expanded(
+            flex: 4, // 20%
+            child: Padding(
+              padding: EdgeInsets.all(16.0),
+              child: Image.network(card_name, scale: 1),
+            ),
+          ),
+          Expanded(
+            flex: 6, // 20%
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(
+                      left: 10.0, right: 20.0, top: 0, bottom: 16),
+                  child: Text(card['card_name_english'].toUpperCase(),
+                      style: TextStyle(
+                          fontSize: 18.0, fontWeight: FontWeight.bold)),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 10.0, right: 20.0),
+                  child: Text(
+                      card['card_description']
+                          .replaceAll(new RegExp(r'\[.*?\] '), ''),
+                      style: TextStyle(fontSize: 14)),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     ),
   );
 }
