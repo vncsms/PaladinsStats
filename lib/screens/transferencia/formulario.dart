@@ -54,6 +54,14 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
     }
   }
 
+  translateCardDescription(String text) {
+    String newCardDescription = '';
+
+    newCardDescription = text.replaceAll(new RegExp(r'\[.*?\] '), '');
+
+    return newCardDescription;
+  }
+
   Widget _championDetail(champion) {
     return SingleChildScrollView(
       child: Column(
@@ -65,8 +73,84 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
           _titleTopic('abilites', 45.0),
           _abilites(champion),
           _abiliteDetails(champion),
+          _cardsDetails(champion),
         ],
       ),
+    );
+  }
+
+  Widget _cardsDetails(champion) {
+    final cards = [];
+    for (var card in champion[0]['cards']) {
+      if (card['rarity'] == 'Common') {
+        cards.add(card);
+      }
+    }
+
+    return SizedBox(
+      height: 550.0,
+      child: ListView.builder(
+          scrollDirection: Axis.horizontal,
+          itemCount: cards.length,
+          itemBuilder: (context, index) {
+            return Container(
+              width: MediaQuery.of(context).size.width,
+              height: MediaQuery.of(context).size.height,
+              child: Padding(
+                padding: EdgeInsets.only(
+                    left: 10.0, right: 10.0, top: 10.0, bottom: 16),
+                child: _commonCard(cards[index]),
+              ),
+            );
+          }),
+    );
+  }
+
+  Widget _commonCard(card) {
+    return Stack(
+      children: <Widget>[
+        Positioned(
+          bottom: MediaQuery.of(context).size.height * 0.43,
+          left: MediaQuery.of(context).size.width * 0.13,
+          child: Container(
+            height: MediaQuery.of(context).size.width * 0.54,
+            child: Image.network(card['championCard_URL']),
+          ),
+        ),
+        Center(child: Image.asset('assets/images/frame-5.png')),
+        Positioned(
+          bottom: MediaQuery.of(context).size.height * 0.066,
+          left: MediaQuery.of(context).size.width * 0.135,
+          child: Text('4',
+              style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold)),
+        ),
+        Positioned(
+          bottom: MediaQuery.of(context).size.height * 0.393,
+          left: MediaQuery.of(context).size.width * 0.15,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.635,
+            height: MediaQuery.of(context).size.width * 0.05,
+            child: Center(
+              child: Text(card['card_name'],
+                  style: TextStyle(fontSize: 15, color: Colors.white)),
+            ),
+          ),
+        ),
+        Positioned(
+          bottom: MediaQuery.of(context).size.height * 0.10,
+          left: MediaQuery.of(context).size.width * 0.15,
+          child: Container(
+            width: MediaQuery.of(context).size.width * 0.635,
+            height: MediaQuery.of(context).size.width * 0.43,
+            child: Center(
+              child: Text(translateCardDescription(card['card_description']),
+                  textAlign: TextAlign.center,
+                  style: TextStyle(fontSize: 15, color: Colors.black)),
+            ),
+          ),
+        ),
+
+      ],
     );
   }
 

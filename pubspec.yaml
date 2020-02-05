@@ -48,6 +48,11 @@ flutter:
     - assets/images/support.png
     - assets/images/flank.png
     - assets/images/bottom-border.png
+    - assets/images/frame-1.png
+    - assets/images/frame-2.png
+    - assets/images/frame-3.png
+    - assets/images/frame-4.png
+    - assets/images/frame-5.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
