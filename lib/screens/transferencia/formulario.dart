@@ -17,6 +17,7 @@ class FormularioTransferencia extends StatefulWidget {
 
 class FormularioTransferenciaState extends State<FormularioTransferencia> {
   String selected = '1';
+  String levelCards = '1';
 
   @override
   Widget build(BuildContext context) {
@@ -54,14 +55,6 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
     }
   }
 
-  translateCardDescription(String text) {
-    String newCardDescription = '';
-
-    newCardDescription = text.replaceAll(new RegExp(r'\[.*?\] '), '');
-
-    return newCardDescription;
-  }
-
   Widget _championDetail(champion) {
     return SingleChildScrollView(
       child: Column(
@@ -73,8 +66,99 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
           _titleTopic('abilites', 45.0),
           _abilites(champion),
           _abiliteDetails(champion),
+          _titleTopic('cards', 30.0),
+          _cardsLevelChange(),
           _cardsDetails(champion),
         ],
+      ),
+    );
+  }
+
+  Widget _cardsLevelChange() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              levelCards = '1';
+            });
+          },
+          child: _levelIcon('1'),
+        ),
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              levelCards = '2';
+            });
+          },
+          child: _levelIcon('2'),
+        ),
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              levelCards = '3';
+            });
+          },
+          child: _levelIcon('3'),
+        ),
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              levelCards = '4';
+            });
+          },
+          child: _levelIcon('4'),
+        ),
+        GestureDetector(
+          onTap: () {
+            setState(() {
+              levelCards = '5';
+            });
+          },
+          child: _levelIcon('5'),
+        ),
+      ],
+    );
+  }
+
+  Widget _levelIcon(index) {
+    var colorBorder =
+        index == levelCards ? HexColor('#547a8c') : const Color(0x00000000);
+    ;
+
+    return Container(
+      height: 50.0,
+      width: 50.0,
+      decoration: BoxDecoration(
+        borderRadius: new BorderRadius.circular(25.0),
+        border: Border(
+          top: BorderSide(width: 2.0, color: HexColor('#547a8c')),
+          left: BorderSide(width: 2.0, color: HexColor('#547a8c')),
+          right: BorderSide(width: 2.0, color: HexColor('#547a8c')),
+          bottom: BorderSide(width: 2.0, color: HexColor('#547a8c')),
+        ),
+      ),
+      child: Center(
+        child: Padding(
+          padding: const EdgeInsets.all(2.0),
+          child: Container(
+            height: 40.0,
+            width: 40.0,
+            decoration: BoxDecoration(
+              borderRadius: new BorderRadius.circular(25.0),
+              border: Border(
+                top: BorderSide(width: 3.0, color: colorBorder),
+                left: BorderSide(width: 3.0, color: colorBorder),
+                right: BorderSide(width: 3.0, color: colorBorder),
+                bottom: BorderSide(width: 3.0, color: colorBorder),
+              ),
+            ),
+            child: Center(
+              child: Text(index, style: TextStyle(color: HexColor('#547a8c'))),
+            ),
+          ),
+        ),
       ),
     );
   }
@@ -117,11 +201,12 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
             child: Image.network(card['championCard_URL']),
           ),
         ),
-        Center(child: Image.asset('assets/images/frame-5.png')),
+        Center(
+            child: Image.asset('assets/images/frame-' + levelCards + '.png')),
         Positioned(
           bottom: MediaQuery.of(context).size.height * 0.066,
           left: MediaQuery.of(context).size.width * 0.135,
-          child: Text('4',
+          child: Text(levelCards,
               style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold)),
         ),
         Positioned(
@@ -143,13 +228,12 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
             width: MediaQuery.of(context).size.width * 0.635,
             height: MediaQuery.of(context).size.width * 0.43,
             child: Center(
-              child: Text(translateCardDescription(card['card_description']),
+              child: Text(translateCardDescription(card['card_description'], levelCards),
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 15, color: Colors.black)),
             ),
           ),
         ),
-
       ],
     );
   }
@@ -184,7 +268,6 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
                 setState(() {
                   selected = '1';
                 });
-                debugPrint(selected);
               },
               child: _abilityIcon(champion, '1'),
             ),
@@ -196,7 +279,6 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
                 setState(() {
                   selected = '2';
                 });
-                debugPrint(selected);
               },
               child: _abilityIcon(champion, '2'),
             ),
@@ -208,7 +290,6 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
                 setState(() {
                   selected = '3';
                 });
-                debugPrint(selected);
               },
               child: _abilityIcon(champion, '3'),
             ),
@@ -220,7 +301,6 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
                 setState(() {
                   selected = '4';
                 });
-                debugPrint(selected);
               },
               child: _abilityIcon(champion, '4'),
             ),
@@ -232,7 +312,6 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
                 setState(() {
                   selected = '5';
                 });
-                debugPrint(selected);
               },
               child: _abilityIcon(champion, '5'),
             ),
@@ -408,4 +487,29 @@ class HexColor extends Color {
   }
 
   HexColor(final String hexColor) : super(_getColorFromHex(hexColor));
+}
+
+translateCardDescription(String text, String selected) {
+  String newCardDescription = '';
+
+  String equation = RegExp(r'\{.*?\}').firstMatch(text).group(0);
+
+  equation = equation.replaceAll('{', '');
+  equation = equation.replaceAll('}', '');
+
+  var aux = equation.split('=');
+  var base = aux[1].split('|')[0];
+  var scale = aux[1].split('|')[1];
+
+  double value =
+      double.parse(base) + double.parse(scale) * (int.parse(selected) - 1);
+
+  newCardDescription =
+      text.replaceAll(new RegExp(r'\{.*?\}'), value.toStringAsFixed(2));
+  newCardDescription =
+      newCardDescription.replaceAll(new RegExp(r'\[.*?\] '), '');
+  newCardDescription =
+      newCardDescription.replaceAll('.0', '');
+
+  return newCardDescription;
 }
