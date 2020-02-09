@@ -172,14 +172,13 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
     }
 
     return SizedBox(
-      height: 550.0,
+      height: 479.0,
       child: ListView.builder(
           scrollDirection: Axis.horizontal,
           itemCount: cards.length,
           itemBuilder: (context, index) {
             return Container(
               width: MediaQuery.of(context).size.width,
-              height: MediaQuery.of(context).size.height,
               child: Padding(
                 padding: EdgeInsets.only(
                     left: 10.0, right: 10.0, top: 10.0, bottom: 16),
@@ -191,52 +190,56 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
   }
 
   Widget _commonCard(card) {
-    return Stack(
-      children: <Widget>[
-        Positioned(
-          bottom: MediaQuery.of(context).size.height * 0.43,
-          left: MediaQuery.of(context).size.width * 0.13,
-          child: Container(
-            height: MediaQuery.of(context).size.width * 0.54,
+    double height = 479.0;
+    double width = 314.0;
+    double leftWidth = (MediaQuery.of(context).size.width - width) / 2;
+
+    return Container(
+      child: Stack(
+        children: <Widget>[
+          Positioned(
+            bottom: height * 0.45,
+            left: leftWidth + 20,
             child: Image.network(card['championCard_URL']),
           ),
-        ),
-        Center(
-            child: Image.asset('assets/images/frame-' + levelCards + '.png')),
-        Positioned(
-          bottom: MediaQuery.of(context).size.height * 0.066,
-          left: MediaQuery.of(context).size.width * 0.135,
-          child: Text(levelCards,
-              style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold)),
-        ),
-        Positioned(
-          bottom: MediaQuery.of(context).size.height * 0.393,
-          left: MediaQuery.of(context).size.width * 0.15,
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.635,
-            height: MediaQuery.of(context).size.width * 0.05,
+          Container(
             child: Center(
-              child: Text(card['card_name'],
-                  style: TextStyle(fontSize: 15, color: Colors.white)),
+                child:
+                    Image.asset('assets/images/frame-' + levelCards + '.png')),
+          ),
+          Positioned(
+            bottom: height * 0.03,
+            left: leftWidth + 32,
+            child: Text(levelCards,
+                style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold)),
+          ),
+          Positioned(
+            bottom: height * 0.415,
+            child: Container(
+              width: MediaQuery.of(context).size.width - 20,
+              child: Center(
+                child: Text(card['card_name'],
+                    style: TextStyle(fontSize: 15, color: Colors.white)),
+              ),
             ),
           ),
-        ),
-        Positioned(
-          bottom: MediaQuery.of(context).size.height * 0.10,
-          left: MediaQuery.of(context).size.width * 0.15,
-          child: Container(
-            width: MediaQuery.of(context).size.width * 0.635,
-            height: MediaQuery.of(context).size.width * 0.43,
-            child: Center(
-              child: Text(
-                  translateCardDescription(
-                      card['card_description'], levelCards),
-                  textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 15, color: Colors.black)),
+          Positioned(
+            bottom: height * 0.07,
+            left: leftWidth + 29,
+            child: Container(
+              width: width * 0.75,
+              height: height * 0.32,
+              child: Center(
+                child: Text(
+                    translateCardDescription(
+                        card['card_description'], levelCards),
+                    textAlign: TextAlign.center,
+                    style: TextStyle(fontSize: 15, color: Colors.black)),
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
