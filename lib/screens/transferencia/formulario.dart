@@ -228,7 +228,9 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
             width: MediaQuery.of(context).size.width * 0.635,
             height: MediaQuery.of(context).size.width * 0.43,
             child: Center(
-              child: Text(translateCardDescription(card['card_description'], levelCards),
+              child: Text(
+                  translateCardDescription(
+                      card['card_description'], levelCards),
                   textAlign: TextAlign.center,
                   style: TextStyle(fontSize: 15, color: Colors.black)),
             ),
@@ -353,18 +355,22 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
         cards.add(card);
       }
     }
-    return SizedBox(
-      height: 550.0,
-      child: ListView.builder(
-          primary: false,
-          itemCount: cards.length,
-          itemBuilder: (context, index) {
-            return Padding(
-              padding:
-                  EdgeInsets.only(left: 20.0, right: 20.0, top: 0, bottom: 16),
-              child: _legendaryCard(cards[index]),
-            );
-          }),
+
+    return Column(
+      children: <Widget>[
+        Padding(
+          padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 0, bottom: 16),
+          child: _legendaryCard(cards[0]),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 0, bottom: 16),
+          child: _legendaryCard(cards[1]),
+        ),
+        Padding(
+          padding: EdgeInsets.only(left: 20.0, right: 20.0, top: 0, bottom: 16),
+          child: _legendaryCard(cards[2]),
+        ),
+      ],
     );
   }
 
@@ -508,8 +514,7 @@ translateCardDescription(String text, String selected) {
       text.replaceAll(new RegExp(r'\{.*?\}'), value.toStringAsFixed(2));
   newCardDescription =
       newCardDescription.replaceAll(new RegExp(r'\[.*?\] '), '');
-  newCardDescription =
-      newCardDescription.replaceAll('.0', '');
+  newCardDescription = newCardDescription.replaceAll('.0', '');
 
   return newCardDescription;
 }
