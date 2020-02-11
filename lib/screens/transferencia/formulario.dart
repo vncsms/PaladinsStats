@@ -1,6 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
+import 'package:paladins_stats_app/services/championsService.dart';
 import '../../models/champion.dart';
 
 class FormularioTransferencia extends StatefulWidget {
@@ -38,21 +38,6 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
             }
           },
         ));
-  }
-
-  fetchPost(championName) async {
-    final response = await http.get(
-        'https://cms.paladins.com/wp-json/wp/v2/champions?slug=' +
-            championName.replaceAll(' ', '-').toLowerCase() +
-            '&lang_id=1');
-
-    if (response.statusCode == 200) {
-      // If the call to the server was successful, parse the JSON
-      return response.body;
-    } else {
-      // If that call was not successful, throw an error.
-      throw Exception('Failed to load post');
-    }
   }
 
   Widget _championDetail(champion) {

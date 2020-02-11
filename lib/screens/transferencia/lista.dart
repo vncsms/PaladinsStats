@@ -47,7 +47,8 @@ class Itemtransferencia extends StatelessWidget {
           Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => FormularioTransferencia(champion: _champion)));
+                  builder: (context) =>
+                      FormularioTransferencia(champion: _champion)));
         },
         child: Card(
           color: const Color(0xff0e343c),
