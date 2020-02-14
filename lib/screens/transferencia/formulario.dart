@@ -26,7 +26,7 @@ class FormularioTransferenciaState extends State<FormularioTransferencia> {
           title: Text(widget.champion.feName),
         ),
         body: FutureBuilder(
-          future: fetchPost(widget.champion.feName),
+          future: getChampion(widget.champion.feName),
           builder: (context, snapshot) {
             if (snapshot.hasData) {
               final champion = json.decode(snapshot.data.toString());

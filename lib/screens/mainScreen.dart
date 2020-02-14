@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:paladins_stats_app/services/userService.dart';
 
 class MainPage extends StatefulWidget {
   @override
@@ -8,15 +11,33 @@ class MainPage extends StatefulWidget {
 }
 
 class MainPageState extends State<MainPage> {
+  int selectedStatus = 1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('MainPage'),
       ),
-      body: _mainPageBody(),
+      body: getStatus(),
     );
   }
+
+  Widget getStatus() {
+    return FutureBuilder(
+      future: getUser(),
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return _mainPageBody();
+        } else {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        }
+      },
+    );
+  }
+
 
   Widget _mainPageBody() {
     return SingleChildScrollView(
@@ -40,49 +61,26 @@ class MainPageState extends State<MainPage> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
-                Container(
-                  color: HexColor('#3183c8'),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text('PLAYER STATS'),
-                  ),
-                ),
-                Container(
-                  color: HexColor('#f8f9fa'),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'MATCHES',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                ),
-                playerStatsItem('Played', '1,711'),
-                playerStatsItem('Won', '931'),
-                playerStatsItem('Played', '1,711'),
-                Container(
-                  color: HexColor('#f8f9fa'),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'OBJECTIVES',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                ),
-                playerStatsItem('CPM', '284'),
-                playerStatsItem('Credits', '5,216,290'),
-                playerStatsItem('Objective Time', '3,668m 35s'),
-                Container(
-                  color: HexColor('#f8f9fa'),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Text(
-                      'DAMAGE',
-                      style: TextStyle(color: Colors.black),
-                    ),
-                  ),
-                ),
+                _playerStatsTitle('MATCHES'),
+                _playerStatsItem('Played', '1,711'),
+                _playerStatsItem('Won', '931'),
+                _playerStatsItem('Played', '1,711'),
+                _playerStatsTitle('PLAYER KILLS'),
+                _playerStatsItem('KDA', '284'),
+                _playerStatsItem('Kills', '5,216,290'),
+                _playerStatsItem('Deaths', '3,668m 35s'),
+                _playerStatsItem('Assists', '3,668m 35s'),
+                _playerStatsTitle('OBJECTIVES'),
+                _playerStatsItem('CPM', '284'),
+                _playerStatsItem('Credits', '5,216,290'),
+                _playerStatsItem('Objective Time', '3,668m 35s'),
+                _playerStatsTitle('DAMAGE'),
+                _playerStatsItem('Player', '284'),
+                _playerStatsItem('Team Healing', '5,216,290'),
+                _playerStatsItem('Self Healing', '3,668m 35s'),
+                _playerStatsItem('Weapon', '3,668m 35s'),
+                _playerStatsItem('Shielding', '3,668m 35s'),
+                _playerStatsItem('Taken', '3,668m 35s'),
               ],
             ),
           ),
@@ -91,7 +89,7 @@ class MainPageState extends State<MainPage> {
     );
   }
 
-  Widget playerStatsItem(title, value) {
+  Widget _playerStatsItem(title, value) {
     return Container(
       color: HexColor('#ffffff'),
       child: Padding(
@@ -113,6 +111,16 @@ class MainPageState extends State<MainPage> {
             ),
           ],
         ),
+      ),
+    );
+  }
+
+  Widget _playerStatsTitle(title) {
+    return Container(
+      color: HexColor('#3183c8'),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Text(title),
       ),
     );
   }
@@ -161,62 +169,39 @@ class MainPageState extends State<MainPage> {
     );
   }
 
+  Widget _optionMode(title, number) {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedStatus = number;
+        });
+      },
+      child: Card(
+        color: selectedStatus == number
+            ? HexColor('#4d648d')
+            : HexColor('#3183c8'),
+        child: Container(
+          width: 150.0,
+          height: 80.0,
+          child: Center(
+            child: Text(title),
+          ),
+        ),
+      ),
+    );
+  }
+
   Widget _statusOptions() {
     return SizedBox(
         height: 80.0,
         child: ListView(
           scrollDirection: Axis.horizontal,
           children: <Widget>[
-            Card(
-              color: HexColor('#4d648d'),
-              child: Container(
-                width: 150.0,
-                height: 80.0,
-                child: Center(
-                  child: Text('Summary'),
-                ),
-              ),
-            ),
-            Card(
-              color: HexColor('#3183c8'),
-              child: Container(
-                width: 150.0,
-                height: 80.0,
-                child: Center(
-                  child: Text('Ranked'),
-                ),
-              ),
-            ),
-            Card(
-              color: HexColor('#3183c8'),
-              child: Container(
-                width: 150.0,
-                height: 80.0,
-                child: Center(
-                  child: Text('Casual'),
-                ),
-              ),
-            ),
-            Card(
-              color: HexColor('#3183c8'),
-              child: Container(
-                width: 150.0,
-                height: 80.0,
-                child: Center(
-                  child: Text('Champions'),
-                ),
-              ),
-            ),
-            Card(
-              color: HexColor('#3183c8'),
-              child: Container(
-                width: 150.0,
-                height: 80.0,
-                child: Center(
-                  child: Text('Matchs'),
-                ),
-              ),
-            ),
+            _optionMode('Summary', 1),
+            _optionMode('Casual', 2),
+            _optionMode('Ranked', 3),
+            _optionMode('Champions', 4),
+            _optionMode('Matchs', 5),
           ],
         ));
   }

@@ -1,10 +1,8 @@
 import 'package:http/http.dart' as http;
 
-getChampion(championName) async {
-  final response = await http.get(
-      'https://cms.paladins.com/wp-json/wp/v2/champions?slug=' +
-          championName.replaceAll(' ', '-').toLowerCase() +
-          '&lang_id=1');
+getUser() async {
+  final response = await http
+      .get('https://api.paladins.guru/v3/profiles/12195252-picicio/summary');
 
   if (response.statusCode == 200) {
     // If the call to the server was successful, parse the JSON
