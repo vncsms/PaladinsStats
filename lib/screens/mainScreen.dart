@@ -28,7 +28,9 @@ class MainPageState extends State<MainPage> {
       future: getUser(),
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return _mainPageBody();
+          final user = json.decode(snapshot.data.toString());
+
+          return _mainPageBody(user);
         } else {
           return Center(
             child: CircularProgressIndicator(),
@@ -38,20 +40,19 @@ class MainPageState extends State<MainPage> {
     );
   }
 
-
-  Widget _mainPageBody() {
+  Widget _mainPageBody(user) {
     return SingleChildScrollView(
       child: Column(
         children: <Widget>[
           _head(),
           _statusOptions(),
-          _playerStats(),
+          _playerStats(user),
         ],
       ),
     );
   }
 
-  Widget _playerStats() {
+  Widget _playerStats(user) {
     return Card(
       child: Padding(
         padding: const EdgeInsets.all(8.0),
@@ -62,25 +63,30 @@ class MainPageState extends State<MainPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: <Widget>[
                 _playerStatsTitle('MATCHES'),
-                _playerStatsItem('Played', '1,711'),
-                _playerStatsItem('Won', '931'),
-                _playerStatsItem('Played', '1,711'),
+                _playerStatsItem(
+                    'Played',
+                    (user['totals']['wins'] + user['totals']['losses'])
+                        .toString()),
+                _playerStatsItem('Won', user['totals']['wins'].toString()),
+                _playerStatsItem('Won', user['totals']['losses'].toString()),
                 _playerStatsTitle('PLAYER KILLS'),
-                _playerStatsItem('KDA', '284'),
-                _playerStatsItem('Kills', '5,216,290'),
-                _playerStatsItem('Deaths', '3,668m 35s'),
-                _playerStatsItem('Assists', '3,668m 35s'),
+                _playerStatsItem('Kills', user['totals']['kills'].toString()),
+                _playerStatsItem('Deaths', user['totals']['deaths'].toString()),
+                _playerStatsItem(
+                    'Assists', user['totals']['assists'].toString()),
                 _playerStatsTitle('OBJECTIVES'),
-                _playerStatsItem('CPM', '284'),
-                _playerStatsItem('Credits', '5,216,290'),
-                _playerStatsItem('Objective Time', '3,668m 35s'),
+                _playerStatsItem('Credits', user['totals']['gold'].toString()),
                 _playerStatsTitle('DAMAGE'),
-                _playerStatsItem('Player', '284'),
-                _playerStatsItem('Team Healing', '5,216,290'),
-                _playerStatsItem('Self Healing', '3,668m 35s'),
-                _playerStatsItem('Weapon', '3,668m 35s'),
-                _playerStatsItem('Shielding', '3,668m 35s'),
-                _playerStatsItem('Taken', '3,668m 35s'),
+                _playerStatsItem('Player', user['totals']['damage'].toString()),
+                _playerStatsItem(
+                    'Team Healing', user['totals']['healing'].toString()),
+                _playerStatsItem(
+                    'Self Healing', user['totals']['self_healing'].toString()),
+                _playerStatsItem(
+                    'Weapon', user['totals']['in_hand'].toString()),
+                _playerStatsItem(
+                    'Shielding', user['totals']['mitigated'].toString()),
+                _playerStatsItem('Taken', user['totals']['taken'].toString()),
               ],
             ),
           ),
