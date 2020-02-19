@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:paladins_stats_app/services/userService.dart';
 
@@ -47,7 +48,97 @@ class MainPageState extends State<MainPage> {
           _head(),
           _statusOptions(),
           _playerStats(user),
+          _mostChampion(user),
         ],
+      ),
+    );
+  }
+
+  Widget _mostChampion(user) {
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          width: MediaQuery.of(context).size.width,
+          child: IntrinsicWidth(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                _playerStatsTitle('MOST PLAYER CHAMPIONS'),
+                _championDetails(user['champions'][0]),
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _championDetails(champion) {
+    return Container(
+      color: HexColor('#ffffff'),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Row(
+          children: <Widget>[
+            Expanded(
+              flex: 3,
+              child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(width: 1.0, color: Colors.amberAccent),
+                  ),
+                  child: Row(
+                children: <Widget>[
+                  Image.network(
+                      'https://web2.hirez.com/paladins/champion-icons/barik.jpg',
+                      width: 50,
+                      height: 50),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(width: 1.0, color: Colors.amberAccent),
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+                          Text(
+                            'Ash',
+                            style: TextStyle(color: Colors.black),
+                            textAlign: TextAlign.left,
+                          ),
+                          Text(
+                            'Front Line',
+                            style: TextStyle(color: Colors.black),
+                            textAlign: TextAlign.left,
+                          ),
+                        ],
+                      ),
+                    ),
+                  )
+                ],
+              )),
+            ),
+            Expanded(
+              flex: 2,
+              child: Container(
+                child: Text(
+                  '1.37 KDA',
+                  style: TextStyle(color: Colors.black, fontSize: 13),
+                ),
+              ),
+            ),
+            Expanded(
+              flex: 2,
+              child: Container(
+                child: Text(
+                  '181 - 117 (61%)',
+                  style: TextStyle(color: Colors.black, fontSize: 13),
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
